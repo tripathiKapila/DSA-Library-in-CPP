@@ -1,5 +1,11 @@
-#include "dsa/LinkedList.hpp"
+/**
+ * @file LinkedList.cpp
+ * @brief Implements the LinkedList class template.
+ */
 
-namespace dsa {
-    template class LinkedList<int>;
-}
+ #include "dsa/LinkedList.hpp"
+
+ namespace dsa {
+     template class LinkedList<int>;
+ }
+ 

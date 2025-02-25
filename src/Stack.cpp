@@ -1,5 +1,11 @@
-#include "dsa/Stack.hpp"
+/**
+ * @file Stack.cpp
+ * @brief Implements the Stack class template.
+ */
 
-namespace dsa {
-    template class Stack<int>;
-}
+ #include "dsa/Stack.hpp"
+
+ namespace dsa {
+     template class Stack<int>;
+ }
+ 

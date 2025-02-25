@@ -1,5 +1,11 @@
-#include "dsa/Queue.hpp"
+/**
+ * @file Queue.cpp
+ * @brief Implements the Queue class template.
+ */
 
-namespace dsa {
-    template class Queue<int>;
-}
+ #include "dsa/Queue.hpp"
+
+ namespace dsa {
+     template class Queue<int>;
+ }
+ 

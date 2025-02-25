@@ -1,6 +1,12 @@
-#include "dsa/Array.hpp"
+/**
+ * @file Array.cpp
+ * @brief Implements the DynamicArray class template.
+ */
 
-namespace dsa {
-    // Explicit instantiation for int type
-    template class DynamicArray<int>;
-}
+ #include "dsa/Array.hpp"
+
+ namespace dsa {
+     // Explicit instantiation for int type.
+     template class DynamicArray<int>;
+ }
+ 

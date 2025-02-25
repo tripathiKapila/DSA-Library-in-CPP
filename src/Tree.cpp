@@ -1,5 +1,11 @@
-#include "dsa/Tree.hpp"
+/**
+ * @file Tree.cpp
+ * @brief Implements the BinarySearchTree class template.
+ */
 
-namespace dsa {
-    template class BinarySearchTree<int>;
-}
+ #include "dsa/Tree.hpp"
+
+ namespace dsa {
+     template class BinarySearchTree<int>;
+ }
+ 

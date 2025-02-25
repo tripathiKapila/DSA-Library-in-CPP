@@ -1,12 +1,18 @@
-#include <cassert>
-#include "dsa/Stack.hpp"
+/**
+ * @file test_Stack.cpp
+ * @brief Tests the Stack class.
+ */
 
-int main() {
-    dsa::Stack<int> stack;
-    stack.push(5);
-    stack.push(10);
-    assert(stack.top() == 10);
-    stack.pop();
-    assert(stack.top() == 5);
-    return 0;
-}
+ #include <cassert>
+ #include "dsa/Stack.hpp"
+ 
+ int main() {
+     dsa::Stack<int> stack;
+     stack.push(5);
+     stack.push(10);
+     assert(stack.top() == 10);
+     stack.pop();
+     assert(stack.top() == 5);
+     return 0;
+ }
+ 
