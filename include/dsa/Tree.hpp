@@ -58,6 +58,13 @@
  
      /// Inserts a value into the BST.
      void insert(const T& value);
+
+     /**
+      * @brief Removes a value from the BST.
+      * @param value Value to remove.
+      * @return True if removed, false if not found.
+      */
+     bool remove(const T& value);
  
      /**
       * @brief Searches for a value in the BST.
@@ -116,6 +123,10 @@
  
      /// Recursively inserts a value starting from a node.
      void insert(TreeNode<T>*& node, const T& value);
+     /// Recursively removes a value.
+     bool remove(TreeNode<T>*& node, const T& value);
+     /// Finds the minimum value node in a subtree.
+     TreeNode<T>* findMin(TreeNode<T>* node);
      /// Recursively searches for a value.
      bool search(TreeNode<T>* node, const T& value) const;
      /// Recursively performs in-order traversal.
@@ -125,6 +136,10 @@
      /// Recursively clones a BST.
      TreeNode<T>* clone(TreeNode<T>* node);
  };
+
+ // Define Tree as an alias for BinarySearchTree for backward compatibility
+ template<typename T>
+ using Tree = BinarySearchTree<T>;
  
  template<typename T>
  BinarySearchTree<T>::BinarySearchTree() : root_(nullptr) {}
@@ -181,6 +196,57 @@
          insert(node->left, value);
      else if (value > node->data)
          insert(node->right, value);
+ }
+
+ template<typename T>
+ bool BinarySearchTree<T>::remove(const T& value) {
+     return remove(root_, value);
+ }
+
+ template<typename T>
+ bool BinarySearchTree<T>::remove(TreeNode<T>*& node, const T& value) {
+     if (!node) return false;
+     
+     if (value < node->data) {
+         return remove(node->left, value);
+     } else if (value > node->data) {
+         return remove(node->right, value);
+     } else {
+         // Found the node to remove
+         
+         // Case 1: No children
+         if (!node->left && !node->right) {
+             delete node;
+             node = nullptr;
+         }
+         // Case 2: One child
+         else if (!node->left) {
+             TreeNode<T>* temp = node;
+             node = node->right;
+             delete temp;
+         }
+         else if (!node->right) {
+             TreeNode<T>* temp = node;
+             node = node->left;
+             delete temp;
+         }
+         // Case 3: Two children
+         else {
+             TreeNode<T>* temp = findMin(node->right);
+             node->data = temp->data;
+             remove(node->right, temp->data);
+         }
+         return true;
+     }
+ }
+
+ template<typename T>
+ TreeNode<T>* BinarySearchTree<T>::findMin(TreeNode<T>* node) {
+     if (!node) return nullptr;
+     while (node->left) {
+         node = node->left;
+     }
+     return node;
  }
  
  template<typename T>

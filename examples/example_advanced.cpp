@@ -20,11 +20,15 @@ int main() {
     std::cout << "\n";
     
     // Graph
-    dsa::Graph graph(4);
-    graph.addEdge(0, 1);
-    graph.addEdge(0, 2);
-    graph.addEdge(1, 2);
-    graph.addEdge(2, 3);
+    dsa::Graph<int> graph;
+    int v0 = graph.addVertex(0);
+    int v1 = graph.addVertex(1);
+    int v2 = graph.addVertex(2);
+    int v3 = graph.addVertex(3);
+    graph.addEdge(v0, v1);
+    graph.addEdge(v0, v2);
+    graph.addEdge(v1, v2);
+    graph.addEdge(v2, v3);
     std::cout << "Graph:\n";
     graph.printGraph();
     

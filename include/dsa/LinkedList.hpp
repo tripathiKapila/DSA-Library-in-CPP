@@ -67,6 +67,9 @@
  
      /// Removes the first element.
      void pop_front();
+
+     /// Removes the last element.
+     void pop_back();
  
      /// Checks if the list is empty.
      bool empty() const;
@@ -215,6 +218,29 @@
      if (!head_)
          tail_ = nullptr;
      delete temp;
+     --size_;
+ }
+
+ template<typename T>
+ void LinkedList<T>::pop_back() {
+     if (!head_)
+         throw std::out_of_range("List is empty");
+     
+     if (head_ == tail_) {
+         // Only one node
+         delete head_;
+         head_ = tail_ = nullptr;
+     } else {
+         // More than one node
+         Node<T>* current = head_;
+         // Find the node before the tail
+         while (current->next != tail_)
+             current = current->next;
+         
+         delete tail_;
+         tail_ = current;
+         tail_->next = nullptr;
+     }
      --size_;
  }
  

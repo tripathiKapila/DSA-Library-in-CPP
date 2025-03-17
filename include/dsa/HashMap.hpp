@@ -42,6 +42,14 @@
       * @param value Value associated with the key.
       */
      void put(const Key& key, const Value& value);
+
+     /**
+      * @brief Alias for put method.
+      *
+      * @param key Key to insert.
+      * @param value Value associated with the key.
+      */
+     void insert(const Key& key, const Value& value) { put(key, value); }
  
      /**
       * @brief Retrieves the value associated with a key.
